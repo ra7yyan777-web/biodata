@@ -413,44 +413,126 @@
             gap: 12px 15px;
         }
 
-        /* Responsive */
+        /* Responsive - Mobile Optimized */
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
             .container {
                 flex-direction: column;
-                max-width: 420px;
+                max-width: 100%;
+                border-radius: 16px;
+            }
+
+            .container::before {
+                border-radius: 18px;
             }
 
             .left-section {
-                padding: 40px 30px;
+                padding: 35px 25px;
                 border-right: none;
                 border-bottom: 1px solid rgba(212, 175, 55, 0.15);
             }
 
             .biodata-title {
-                font-size: 2rem;
+                font-size: 1.9rem;
                 letter-spacing: 4px;
             }
 
-            .photo-frame {
-                width: 150px;
-                height: 180px;
+            .title-line {
+                width: 60px;
+                margin: 15px 0;
             }
 
-            .info-grid, .edu-grid {
+            .subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 4px;
+            }
+
+            .profile-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-top: 20px;
+            }
+
+            .ornament-top,
+            .ornament-bottom {
+                display: none;
+            }
+
+            .side-text {
+                display: none;
+            }
+
+            .photo-section {
+                padding: 25px;
+            }
+
+            .photo-frame {
+                width: 140px;
+                height: 170px;
+                border-width: 3px;
+            }
+
+            .details-section {
+                padding: 20px 25px;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+
+            .info-grid,
+            .edu-grid {
                 grid-template-columns: 1fr;
-                gap: 5px;
+                gap: 8px;
             }
 
             .info-label {
-                margin-top: 10px;
+                font-size: 0.8rem;
+                padding: 4px 8px;
             }
 
             .info-label::before {
                 display: none;
             }
 
-            .side-text {
-                display: none;
+            .info-value {
+                font-size: 0.95rem;
+                padding: 4px 8px;
+            }
+
+            .education-section {
+                padding: 20px 25px;
+            }
+
+            .info-item:hover .info-label,
+            .info-item:hover .info-value {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .biodata-title {
+                font-size: 1.6rem;
+            }
+
+            .photo-frame {
+                width: 120px;
+                height: 150px;
+            }
+
+            .left-section {
+                padding: 30px 20px;
+            }
+
+            .details-section,
+            .education-section {
+                padding-left: 20px;
+                padding-right: 20px;
             }
         }
     </style>
