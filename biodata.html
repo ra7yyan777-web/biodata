@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIODATA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Rajdhani', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 950px;
+            width: 100%;
+            background: linear-gradient(145deg, #141414, #1c1c1c);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 22px;
+            padding: 2px;
+            background: linear-gradient(135deg, #d4af37, #f5e6a3, #d4af37, #aa8c2c);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderGlow 3s linear infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container:hover {
+            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Left Section - Title */
+        .left-section {
+            flex: 0 0 38%;
+            background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .left-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10%, 10%); }
+        }
+
+        /* Decorative elements for left side */
+        .left-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .ornament {
+            position: absolute;
+            color: rgba(212, 175, 55, 0.3);
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        .ornament-top {
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ornament-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4));
+        }
+
+        .ornament-line:last-child {
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.4), transparent);
+        }
+
+        .ornament-bottom {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .side-text {
+            position: absolute;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            color: rgba(212, 175, 55, 0.25);
+            text-transform: uppercase;
+        }
+
+        .side-text-left {
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .side-text-right {
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .biodata-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #d4af37;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+            animation: fadeInDown 1s ease-out, glowTitle 2s ease-in-out infinite;
+            margin-bottom: 5px;
+        }
+
+        @keyframes glowTitle {
+            0%, 100% { text-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+            50% { text-shadow: 0 0 70px rgba(212, 175, 55, 0.8), 0 0 100px rgba(212, 175, 55, 0.4); }
+        }
+
+        .title-line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px 0;
+            animation: expandLine 1s ease-out 0.5s both, shimmerLine 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmerLine {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: #d4af37;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.8s both;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.8; }
+        }
+
+        /* Profile initials decoration */
+        .profile-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .profile-badge::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            animation: pulseRing 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        /* Right Section - Photo & Details */
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            padding: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.03) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .photo-frame {
+            width: 180px;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border: 4px solid #d4af37;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.4);
+            border-color: #f5e6a3;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transition: transform 0.7s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.2) 100%);
+            pointer-events: none;
+        }
+
+        /* Details Section */
+        .details-section {
+            padding: 25px 35px;
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .section-title::before {
+            content: '✦';
+            font-size: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.4), transparent);
+        }
+
+        .section-title:hover {
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            transform: translateX(5px);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 12px 15px;
+        }
+
+        .info-item {
+            display: contents;
+        }
+
+        .info-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .info-label::before {
+            content: '◆';
+            font-size: 0.5rem;
+            color: rgba(212, 175, 55, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover .info-label {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+
+        .info-item:hover .info-label::before {
+            color: #d4af37;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #d4af37;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            opacity: 0.85;
+        }
+
+        .info-item:hover .info-value {
+            color: #f5e6a3;
+            transform: translateX(8px);
+            opacity: 1;
+        }
+
+        .highlight {
+            color: #f5e6a3;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-section {
+            padding: 20px 35px 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.02) 100%);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 12px 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 420px;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+                border-right: none;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            }
+
+            .biodata-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .photo-frame {
+                width: 150px;
+                height: 180px;
+            }
+
+            .info-grid, .edu-grid {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .info-label {
+                margin-top: 10px;
+            }
+
+            .info-label::before {
+                display: none;
+            }
+
+            .side-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section - Title -->
+        <div class="left-section">
+            <div class="left-decoration">
+                <div class="ornament ornament-top">
+                    <div class="ornament-line"></div>
+                    <span>✦</span>
+                    <div class="ornament-line"></div>
+                </div>
+                <span class="side-text side-text-left">Biodata Profile</span>
+                <span class="side-text side-text-right">Personal Details</span>
+                <div class="ornament ornament-bottom">
+                    <div class="ornament-line"></div>
+                    <span>✦</span>
+                    <div class="ornament-line"></div>
+                </div>
+            </div>
+            <h1 class="biodata-title">BIODATA</h1>
+            <div class="title-line"></div>
+            <p class="subtitle">Personal Profile</p>
+            <div class="profile-badge">RA</div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <!-- Photo Section -->
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co/cKhKKHwh/Screenshot-2026-04-25-221909.png" alt="Ruhaan Ali">
+                </div>
+            </div>
+
+            <!-- Details Section -->
+            <div class="details-section">
+                <h2 class="section-title">Personal Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Name</span>
+                        <span class="info-value highlight">Ruhaan Ali</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Height</span>
+                        <span class="info-value">5'7"</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Age</span>
+                        <span class="info-value">28 Years</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Father</span>
+                        <span class="info-value">Liyakath Ali</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Mother</span>
+                        <span class="info-value">Rumana Fathima</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education & Job Section -->
+            <div class="education-section">
+                <h2 class="section-title">Education & Career</h2>
+                <div class="edu-grid">
+                    <div class="info-item">
+                        <span class="info-label">Qualification</span>
+                        <span class="info-value">BA Honours in Finance & Accounting<br><small style="opacity:0.6">(A P U Malaysia)</small></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ACCA</span>
+                        <span class="info-value">Affiliate</span>
+                    </div>
+                    <div class="info-item" style="grid-column: span 2;">
+                        <span class="info-label">Current Position</span>
+                        <span class="info-value highlight">Senior Financial Planning & Analysis Analyst</span>
+                    </div>
+                    <div class="info-item" style="grid-column: span 2;">
+                        <span class="info-label">Organization</span>
+                        <span class="info-value">Mofarreh, Alharbi & Partners<br><small style="opacity:0.6">Saudi Arabia (Al-Khobar)</small></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
